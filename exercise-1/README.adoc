@@ -9,3 +9,5 @@ The project shall display a welcome page and run on WildFly as well as Glassfish
 
 - [ ] Learn how to set up a Java EE project
 - [ ] Understand the difference between vendor specific and standard configuration
+
+TIP: The IDE is a powerful tool...
