@@ -1,2 +1,3 @@
 = Exercises for Java EE Crash Course
 
+Description here with link to wiki
