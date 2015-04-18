@@ -1,4 +1,13 @@
 = Exercise 1
 
-Description here
+== Create a simple Java EE 7 project
 
+Using the tools at hand, create a simple Java EE 7 project with the minimum of configuration.
+The project shall display a welcome page and run on WildFly as well as Glassfish.
+
+=== Objectives
+
+- [ ] Learn how to set up a Java EE project
+- [ ] Understand the difference between vendor specific and standard configuration
+
+TIP: The IDE is a powerful tool...
