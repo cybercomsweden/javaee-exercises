@@ -1,4 +1,11 @@
 = Exercise 2
 
-Description here
+== Build a REST interface using JAX-RS
+
+In this exercise you are going to create your first JAX-RS application.
+
+=== Ojbectives
+
+- [ ] Learn to configure a JAX-RS application
+- [ ] Resources and Sub Resources
 

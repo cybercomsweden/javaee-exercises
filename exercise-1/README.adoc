@@ -2,8 +2,9 @@
 
 == Create a simple Java EE 7 project
 
-Using the tools at hand, create a simple Java EE 7 project with the minimum of configuration.
-The project shall display a welcome page and run on WildFly as well as Glassfish.
+Using the tools at hand, create a simple Java EE 7 web application with the minimum of configuration.
+The project shall display a welcome page and run on WildFly as well as Glassfish. Context for the application
+shall be *exercise-1*.
 
 === Objectives
 
