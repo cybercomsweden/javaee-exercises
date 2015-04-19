@@ -1,0 +1,13 @@
+= Exercise 3
+
+== EJBs
+
+In this exercise you are going to create an EJB and use it from the JAX-RS resource
+you created in Exercise 2.
+
+=== Ojbectives
+
+- [ ] Learn to create an EJB
+- [ ] How to inject an EJB
+- [ ] Local and Remote EJBs
+
