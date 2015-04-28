@@ -1,3 +1,19 @@
 = Exercises for Java EE Crash Course
 
-Description here with link to wiki
+== Content
+ * Java EE Overview
+ * How to structure a Java EE project
+ * Practical use of selected Java EE technologies
+    ** JAX-RS
+    ** JPA
+    ** CDI
+    ** EJB
+
+== Structure
+The course will be structured as a practical workshop where participants work with practical exercises
+alone or in pairs. Each section of exercises will introduced with a short lecture on the topic and followed
+by a walk-through of the solution.
+
+== Prerequisites
+Participants must have good knowledge of the Java programming language and general knowledge of servers side
+programming. No prior Java EE knowledge is required.
