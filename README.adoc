@@ -4,7 +4,7 @@
  * Java EE Overview
  * How to structure a Java EE project
  * Practical use of selected Java EE technologies
-    ** JAX-RS
+    ** JAX-RS link:exercise-1/Readme[Exercise 1]
     ** JPA
     ** CDI
     ** EJB
