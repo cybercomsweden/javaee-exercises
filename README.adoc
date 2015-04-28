@@ -1,13 +1,13 @@
 = Exercises for Java EE Crash Course
 
 == Content
- - Java EE Overview
- - How to structure a Java EE project
- - Practical use of selected Java EE technologies
-    -- JAX-RS
-    -- JPA
-    -- CDI
-    -- EJB
+ * Java EE Overview
+ * How to structure a Java EE project
+ * Practical use of selected Java EE technologies
+    ** JAX-RS
+    ** JPA
+    ** CDI
+    ** EJB
 
 == Structure
 The course will be structured as a practical workshop where participants work with practical exercises
