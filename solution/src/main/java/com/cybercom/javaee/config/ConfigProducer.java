@@ -5,10 +5,12 @@
  */
 package com.cybercom.javaee.config;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.math.BigInteger;
+import java.util.Properties;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
-import javax.enterprise.context.Dependent;
 import javax.enterprise.inject.spi.InjectionPoint;
 import javax.ws.rs.Produces;
 
@@ -18,6 +20,10 @@ import javax.ws.rs.Produces;
  */
 @ApplicationScoped
 public class ConfigProducer {
+
+   private int cacheTimeout;
+   private long timestamp;
+   private final Properties configurationProperties = new Properties();
 
    /**
     * Injects a string configuration value.
@@ -40,7 +46,7 @@ public class ConfigProducer {
    @Produces
    @Config
    public BigInteger getConfigurationBigInt(InjectionPoint ip) {
-      return new BigInteger(getValue(ip.getAnnotated().getAnnotation(Config.class).key()));
+      return new BigInteger(getConfigurationValue(ip));
    }
 
    /**
@@ -53,9 +59,8 @@ public class ConfigProducer {
    @Produces
    public int getConfigurationInt(InjectionPoint ip) {
       try {
-         return Integer.parseInt(getValue(ip.getAnnotated().getAnnotation(Config.class).key()));
+         return Integer.parseInt(getConfigurationValue(ip));
       } catch (NumberFormatException e) {
-//         logger.severe(() -> "Invalid format for " + ip.getAnnotated().getAnnotation(Config.class).key() + "=" + getValue(ip.getAnnotated().getAnnotation(Config.class).key()));
          throw new RuntimeException("Invalid format for " + ip.getAnnotated().getAnnotation(Config.class).key() + "=" + getValue(ip.getAnnotated().getAnnotation(Config.class).key()), e);
       }
    }
@@ -70,7 +75,7 @@ public class ConfigProducer {
    @Produces
    public boolean getConfigurationBool(InjectionPoint ip) {
 
-      if (getValue(ip.getAnnotated().getAnnotation(Config.class).key()).equalsIgnoreCase("false")) {
+      if (getValue(getConfigurationValue(ip)).equalsIgnoreCase("false")) {
          return Boolean.FALSE;
       }
 
@@ -87,10 +92,27 @@ public class ConfigProducer {
       if (configKey == null || configKey.isEmpty()) {
          throw new IllegalArgumentException("Configuration key is empty.");
       }
-      return "";
+
+      final long now = System.currentTimeMillis();
+
+      if (cacheTimeout > 0 && now - timestamp > cacheTimeout) {
+         loadPropertiesFromFile();
+      }
+
+      return configurationProperties.getProperty(configKey);
    }
 
    @PostConstruct
-   private void init()  {
+   private void init() {
+
+      cacheTimeout = Integer.parseInt(System.getProperty("system.config.cache.timeout")) * 60 * 1000;
+      loadPropertiesFromFile();
+   }
+
+   private void loadPropertiesFromFile() {
+      try (InputStream is = this.getClass().getClassLoader().getResourceAsStream(System.getProperty("configuration.properties"));) {
+         configurationProperties.load(is);
+      } catch (NullPointerException | IOException e) {
+      }
    }
 }
