@@ -95,7 +95,7 @@ public class ConfigProducer {
 
       final long now = System.currentTimeMillis();
 
-      if (cacheTimeout > 0 && now - timestamp > cacheTimeout) {
+      if (cacheTimeout <= 0 || now - timestamp > cacheTimeout) {
          loadPropertiesFromFile();
       }
 
