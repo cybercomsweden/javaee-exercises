@@ -18,6 +18,7 @@
  */
 package com.cybercom.javaee.config;
 
+import com.cybercom.javaee.rest.ItemResource;
 import com.cybercom.javaee.rest.ItemsResource;
 import java.util.HashSet;
 import java.util.Set;
@@ -37,6 +38,7 @@ public class ApplicationConfig extends Application {
       
       final Set<Class<?>> classes = new HashSet<>();
       classes.add(ItemsResource.class);
+      classes.add(ItemResource.class);
       return classes;
    }
 
