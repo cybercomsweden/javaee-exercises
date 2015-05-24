@@ -35,6 +35,7 @@ public class ItemsResource {
    @GET
    @Produces(APPLICATION_JSON)
    public Response getItems() {
+      itemService.foo();
       return Response.ok(new ArrayList<>()).build();
    }       
    

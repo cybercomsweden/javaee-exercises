@@ -36,6 +36,6 @@ public class ItemResource {
    @Produces(APPLICATION_JSON)
    public Response getItem(@PathParam("id") String id) {
 
-      return Response.ok(new Item()).build();
+      return Response.ok(itemService.getShoppingListItem(Long.valueOf(id))).build();
    }
 }

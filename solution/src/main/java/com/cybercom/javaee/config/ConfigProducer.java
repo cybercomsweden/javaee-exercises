@@ -5,14 +5,15 @@
  */
 package com.cybercom.javaee.config;
 
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.math.BigInteger;
 import java.util.Properties;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.inject.Produces;
 import javax.enterprise.inject.spi.InjectionPoint;
-import javax.ws.rs.Produces;
 
 /**
  *
@@ -110,7 +111,7 @@ public class ConfigProducer {
    }
 
    private void loadPropertiesFromFile() {
-      try (InputStream is = this.getClass().getClassLoader().getResourceAsStream(System.getProperty("configuration.properties"));) {
+      try (InputStream is = new FileInputStream(System.getProperty("configuration.properties.location"));) {
          configurationProperties.load(is);
       } catch (NullPointerException | IOException e) {
       }
