@@ -28,7 +28,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Item implements Serializable {
 
    @Id
-   @GeneratedValue(strategy = AUTO)
+   @GeneratedValue(strategy = AUTO)       
    @Column(name = "id")
    private Long id;
 
@@ -37,8 +37,8 @@ public class Item implements Serializable {
    private String description;
    
    @XmlAttribute
-   @Column(name = "count")
-   private int count;
+   @Column(name = "amount")
+   private int amount;
 
    public Long getId() {
       return id;
@@ -52,12 +52,12 @@ public class Item implements Serializable {
       this.description = description;
    }
 
-   public int getCount() {
-      return count;
+   public int getAmount() {
+      return amount;
    }
 
-   public void setCount(int count) {
-      this.count = count;
+   public void setAmount(int amount) {
+      this.amount = amount;
    }
 
 }
