@@ -4,4 +4,6 @@
 
 === Ojbectives
 
+=== Resources
 
+- [ ] https://docs.oracle.com/javaee/7/tutorial/partpersist.htm#BNBPY[Persistence Tutorial]

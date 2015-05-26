@@ -11,3 +11,6 @@ you created in Exercise 2.
 - [ ] How to inject an EJB
 - [ ] Local and Remote EJBs
 
+=== Resources
+
+- [ ] https://docs.oracle.com/javaee/7/tutorial/partentbeans.htm#BNBLR[EJB Tutorial]
