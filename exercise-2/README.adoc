@@ -9,3 +9,5 @@ In this exercise you are going to create your first JAX-RS application.
 - [ ] Learn to configure a JAX-RS application
 - [ ] Resources and Sub Resources
 
+=== Resources
+- [ ] https://docs.oracle.com/javaee/7/tutorial/jaxrs.htm#GIEPU[JAX-RS]
