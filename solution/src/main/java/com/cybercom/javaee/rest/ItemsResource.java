@@ -6,8 +6,9 @@
 package com.cybercom.javaee.rest;
 
 import com.cybercom.javaee.entity.Item;
-import com.cybercom.javaee.service.ItemService;
-import java.util.ArrayList;
+import com.cybercom.javaee.service.ShoppingListService;
+import java.net.URI;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.inject.Inject;
 import javax.validation.Valid;
@@ -16,8 +17,12 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.Context;
+import javax.ws.rs.core.GenericEntity;
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.UriBuilder;
+import javax.ws.rs.core.UriInfo;
 
 /**
  *
@@ -30,19 +35,33 @@ public class ItemsResource {
    private ItemResource itemResource;
    
    @EJB
-   private ItemService itemService;
+   private ShoppingListService shoppingListService;
+   
+   @Context
+   private UriInfo uriInfo;
    
    @GET
    @Produces(APPLICATION_JSON)
    public Response getItems() {
-      itemService.foo();
-      return Response.ok(new ArrayList<>()).build();
+      
+      shoppingListService.foo();
+      
+      List<Item> items = shoppingListService.getShopplingList();
+              
+      return Response.ok(new GenericEntity<List<Item>>(items) {}).build();
    }       
    
    @POST
    @Consumes(APPLICATION_JSON)
    public Response create(@Valid Item item) {
-      return Response.created(null).build();
+      
+      shoppingListService.addItemToList(item);
+      
+      UriBuilder uriBuilder = uriInfo.getAbsolutePathBuilder();
+      
+      URI itemUri = uriBuilder.segment(item.getId().toString()).build();
+      
+      return Response.created(itemUri).build();
    }
    
    @Path("{id}")

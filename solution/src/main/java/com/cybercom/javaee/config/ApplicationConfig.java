@@ -18,6 +18,7 @@
  */
 package com.cybercom.javaee.config;
 
+import com.cybercom.javaee.exception.ItemNotFoundExceptionMapper;
 import com.cybercom.javaee.rest.ItemResource;
 import com.cybercom.javaee.rest.ItemsResource;
 import java.util.HashSet;
@@ -36,9 +37,12 @@ public class ApplicationConfig extends Application {
    @Override
    public Set<Class<?>> getClasses() {
       
-      final Set<Class<?>> classes = new HashSet<>();
+      final Set<Class<?>> classes = new HashSet<>();      
       classes.add(ItemsResource.class);
       classes.add(ItemResource.class);
+      
+      classes.add(ItemNotFoundExceptionMapper.class);
+      
       return classes;
    }
 

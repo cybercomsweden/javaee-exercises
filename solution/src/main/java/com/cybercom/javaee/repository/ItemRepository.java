@@ -7,6 +7,7 @@ package com.cybercom.javaee.repository;
 
 import com.cybercom.javaee.entity.Item;
 import java.util.List;
+import java.util.Optional;
 import javax.enterprise.context.Dependent;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -30,8 +31,8 @@ public class ItemRepository {
       em.merge(entity);
    }
 
-   public final Item find(Object id) {
-      return em.find(Item.class, id);
+   public final Optional<Item> find(Object id) {
+      return Optional.ofNullable(em.find(Item.class, id));
    }
 
    public final List<Item> findAll() {
