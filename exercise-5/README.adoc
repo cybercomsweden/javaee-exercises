@@ -51,7 +51,7 @@ Cache the configuration properties and use a system property to configure the ca
 
  System.getProperty("system.config.cache.timeout")
 
-Optional Exercise 2
+==== Optional Exercise 2
 
 Get rid of ugly EJB stack trace when item is not found.
 
@@ -59,8 +59,9 @@ Get rid of ugly EJB stack trace when item is not found.
 
 === Objectives
 
-- [ ] 
-- [ ] 
+- [ ] Learn how to define custom annotations and CDI producers
+- [ ] Learn to configure properties for application servers
+- [ ] Learn how to resolve vendor specific portability issues
 
 === Resource
 
