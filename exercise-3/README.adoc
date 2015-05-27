@@ -11,9 +11,7 @@ Exercise 2. It must be possible to perform all operations supported by the API.
 For this excercise it is ok to model the shopping list as a list of items
  
  public class ShoppingListService {
-
     private List<Item> shoppingList = new ArrayList<>();
-    
     // your code goes here
  }
 
