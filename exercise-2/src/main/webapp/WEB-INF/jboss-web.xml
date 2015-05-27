@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jboss-web>
-  <context-root>/exercise-2</context-root>
+  <context-root>/solution</context-root>
 </jboss-web>
