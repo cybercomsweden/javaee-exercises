@@ -8,41 +8,47 @@ Continue with the application you created in Exercise 1, or use the provided sta
 === Part 1
 Create a simple Hello resource that says hello to the caller.
 
-GET http://localhost:8080/exercise-2/api/hello/Duke
-Hello Duke
+|===
+| Method | URI | Input | Output | Response code
+| GET
+| http://localhost:8080/exercise-2/api/hello/Duke
+| n/a
+| Hello Duke
+| 200
+|===
 
 === Part 2
 Create a REST API for a shopping list application. The following methods should be supported:
 
 |===
-| URI | Method | Input | Output | Response code
+| Method | URI | Input | Output | Response code
 
-| http://localhost:8080/exercise-3/api/items
 | GET
+| http://localhost:8080/exercise-3/api/items
 | n/a
-| JSON representation of item list
+| JSON item list
 | 200
 
-| http://localhost:8080/exercise-3/api/items
 | POST
+| http://localhost:8080/exercise-3/api/items
 | JSON item
 | n/a (URI in Location)
 | 201
 
-| http://localhost:8080/exercise-3/api/items/{id}
 | GET
+| http://localhost:8080/exercise-3/api/items/{id}
 | n/a
 | JSON item
 | 200
 
-| http://localhost:8080/exercise-3/api/items/{id}
 | PUT
+| http://localhost:8080/exercise-3/api/items/{id}
 | JSON item
 | n/a
 | 200
 
-| http://localhost:8080/exercise-3/api/items/{id}
 | DELETE
+| http://localhost:8080/exercise-3/api/items/{id}
 | n/a
 | n/a
 | 200
@@ -52,8 +58,11 @@ Create a REST API for a shopping list application. The following methods should 
 === Objectives
 
 - [ ] Learn to configure a JAX-RS application
-- [ ] Resources and Sub Resources
-- [ ] Portability Issues
+- [ ] Learn about API Design
+- [ ] Learn about Response types
+- [ ] Learn about Validating input
+- [ ] Learn about Resources and Sub Resources
+- [ ] Learn how to cope with Portability Issues
 
 === Resources
 - [ ] https://docs.oracle.com/javaee/7/tutorial/jaxrs.htm#GIEPU[JAX-RS Tutorial]
