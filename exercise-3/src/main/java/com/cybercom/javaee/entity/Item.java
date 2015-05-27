@@ -21,33 +21,61 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.cybercom.javaee.config;
+package com.cybercom.javaee.entity;
 
-import com.cybercom.javaee.api.HelloResource;
-import com.cybercom.javaee.api.ItemResource;
-import com.cybercom.javaee.api.ItemsResource;
-import java.util.HashSet;
-import java.util.Set;
-import javax.ws.rs.ApplicationPath;
-import javax.ws.rs.core.Application;
+import java.io.Serializable;
+import static javax.xml.bind.annotation.XmlAccessType.NONE;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
- * JAX-RS configuration.
- *
- * @author Ivar Grimstad <ivar.grimstad@gmail.com>
+ * A shopping list item.
+ * 
+ * @author Ivar Grimstad (ivar.grimstad@gmail.com)
  */
-@ApplicationPath("api")
-public class ApplicationConfig extends Application {
+@XmlRootElement
+@XmlAccessorType(NONE)
+public class Item implements Serializable {
 
-   @Override
-   public Set<Class<?>> getClasses() {
+   private Long id;
 
-      final Set<Class<?>> classes = new HashSet<>();
+   @XmlAttribute
+   private String description;
+   
+   @XmlAttribute
+   private int amount;
+   
+   public Item() {
+   }
+   
+   public Item(Long id, String decription, int amount) {
+      this.id = id;
+      this.description = decription;
+      this.amount = amount;
+   }
 
-      classes.add(HelloResource.class);
-      classes.add(ItemsResource.class);
-      classes.add(ItemResource.class);
+   public void setId(Long id) {
+      this.id = id;
+   }
+   
+   public Long getId() {
+      return id;
+   }
 
-      return classes;
+   public String getDescription() {
+      return description;
+   }
+
+   public void setDescription(String description) {
+      this.description = description;
+   }
+
+   public int getAmount() {
+      return amount;
+   }
+
+   public void setAmount(int amount) {
+      this.amount = amount;
    }
 }

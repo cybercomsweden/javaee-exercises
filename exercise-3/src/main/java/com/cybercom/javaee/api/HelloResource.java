@@ -21,33 +21,35 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.cybercom.javaee.config;
+package com.cybercom.javaee.api;
 
-import com.cybercom.javaee.api.HelloResource;
-import com.cybercom.javaee.api.ItemResource;
-import com.cybercom.javaee.api.ItemsResource;
-import java.util.HashSet;
-import java.util.Set;
-import javax.ws.rs.ApplicationPath;
-import javax.ws.rs.core.Application;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.core.Response;
 
 /**
- * JAX-RS configuration.
- *
- * @author Ivar Grimstad <ivar.grimstad@gmail.com>
+ * Simple greeting resource just to get started.
+ * 
+ * @author Ivar Grimstad (ivar.grimstad@gmail.com)
  */
-@ApplicationPath("api")
-public class ApplicationConfig extends Application {
+@Path("hello")
+public class HelloResource {
 
-   @Override
-   public Set<Class<?>> getClasses() {
+   private final String template = "Hello %s";
 
-      final Set<Class<?>> classes = new HashSet<>();
+   /**
+    * Friendly resource.
+    * 
+    * @param name The name to greet
+    * @return A nice greeting
+    */
+   @GET
+   @Path("{name}")
+   public Response hello(@PathParam("name") String name) {
 
-      classes.add(HelloResource.class);
-      classes.add(ItemsResource.class);
-      classes.add(ItemResource.class);
+      String message = String.format(template, name);
 
-      return classes;
+      return Response.ok(message).build();
    }
 }
