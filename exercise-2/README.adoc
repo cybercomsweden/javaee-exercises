@@ -61,10 +61,8 @@ Create a REST API for a shopping list application. The following methods should 
 Model the resources using root and sub-resource. This is not really necessary, but added here for practice.
 
  public class ItemsResource {
-    
     @Inject
     private ItemResource itemResource;
-  
     // your code here
  }
 
