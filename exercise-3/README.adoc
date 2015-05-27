@@ -3,7 +3,14 @@
 == EJBs
 
 In this exercise you are going to create an EJB and use it from the JAX-RS resource
-you created in Exercise 2.
+you created in Exercise 2. Use the application you created there, or start with the solution provided here.
+
+Create a Local, Statelessm, Session Bean that expose the needed service methods needed by the resource(s) you created in 
+Exercise 2. It must be possible to perform all operations supported by the API.
+
+- [ ] For this excercise it is ok to model the shopping list as a list of items
+ 
+ private List<Item> shoppingList = new ArrayList<>();
 
 === Ojbectives
 
@@ -11,6 +18,6 @@ you created in Exercise 2.
 - [ ] How to inject an EJB
 - [ ] Local and Remote EJBs
 
-=== Resources
+=== Resources and Hints
 
 - [ ] https://docs.oracle.com/javaee/7/tutorial/partentbeans.htm#BNBLR[EJB Tutorial]
