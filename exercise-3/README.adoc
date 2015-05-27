@@ -19,7 +19,7 @@ When finished, you should be able to access your service through the REST api
 
  http://localhost:8080/exercise-3/api/
 
-=== Ojbectives
+=== Objectives
 
 - [ ] Learn to create an EJB
 - [ ] How to inject an EJB

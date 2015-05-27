@@ -33,7 +33,7 @@ Place *insertItems.sql* in src/main/resources folder. Example content:
  INSERT INTO item(id,description,count) VALUES (100,'Milk', 2)
  INSERT INTO item(id,description,count) VALUES (200,'Apples',3)
 
-=== Ojbectives
+=== Objectives
 
 - [ ] Learn how to model Entities
 - [ ] Learn how to configure persistence with persistence.xml
