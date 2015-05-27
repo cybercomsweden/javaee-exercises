@@ -6,6 +6,15 @@ In this exercise you shall model the Item entity and create a Repository class f
 
 The Item shall have database generated auto-incremented primary key. 
 
+ @Id
+ @GeneratedValue(strategy = AUTO)  
+ private Long id;
+
+++++
+<script src="https://github.com/cybercomsweden/javaee-exercises/blob/master/solution/src/main/resources/META-INF/persistence.xml">
+</script>
+++++
+
 === Ojbectives
 
 - [ ] Learn how to model Entities
