@@ -6,11 +6,26 @@ In this exercise you shall model the Item entity and create a Repository class f
 
 The Item shall have database generated auto-incremented primary key. 
 
-GlassFish
+For this exercise it is ok to use the *drop-and-create* for database generation.
+Use the default datasource as database. Not that it differ a little bit between GlassFish and WildFly as shown below:
+
+*GlassFish*
+
  <jta-data-source>java:comp/DefaultDataSource</jta-data-source>
 
-WildFly
- <jta-data-source>java:/jboss/datasources/ExampleDS</jta-data-source>-->
+*WildFly*
+
+ <jta-data-source>java:/jboss/datasources/ExampleDS</jta-data-source>
+
+*Tip:* Use the following property to load the database with some test data for convenience.
+ 
+ <property name="javax.persistence.sql-load-script-source" value="insertItems.sql"/>
+
+Place *insertItems.sql* in src/main/resources folder. Example content:
+
+ INSERT INTO item(id,description,count) VALUES (100,'Milk', 2)
+ INSERT INTO item(id,description,count) VALUES (200,'Apples',3)
+
 
 === Ojbectives
 
