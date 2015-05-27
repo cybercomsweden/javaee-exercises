@@ -1,7 +1,44 @@
 = Exercise 4
 
-== Persistence
+== Persistence with JPA
 
-=== Ojbectives
+In this exercise you shall model the Item entity and create a Repository class for CRUD operations on Item.
 
+The Item shall have database generated auto-incremented primary key. 
 
+For this exercise it is ok to use the *drop-and-create* for database generation.
+Use the default datasource as database. Not that it differ a little bit between GlassFish and WildFly as shown below:
+
+*GlassFish*
+
+ <jta-data-source>java:comp/DefaultDataSource</jta-data-source>
+
+*WildFly*
+
+ <jta-data-source>java:/jboss/datasources/ExampleDS</jta-data-source>
+
+For the default datasources it is not necessary to do any configuration of the application server. Ask your instructor if you want to see how to
+configure datasources for the different servers.
+
+ public class ItemRepository {
+   // your code goes here
+ }
+
+*Tip:* Use the following property to load the database with some test data for convenience.
+ 
+ <property name="javax.persistence.sql-load-script-source" value="insertItems.sql"/>
+
+Place *insertItems.sql* in src/main/resources folder. Example content:
+
+ INSERT INTO item(id,description,count) VALUES (100,'Milk', 2)
+ INSERT INTO item(id,description,count) VALUES (200,'Apples',3)
+
+=== Objectives
+
+- [ ] Learn how to model Entities
+- [ ] Learn how to configure persistence with persistence.xml
+- [ ] Understand vendor specific configurations
+
+=== Resources
+
+- [ ] https://docs.oracle.com/javaee/7/tutorial/partpersist.htm#BNBPY[Persistence Tutorial]

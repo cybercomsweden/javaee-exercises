@@ -2,6 +2,67 @@
 
 == CDI
 
-=== Ojbectives
+In this exercise you will return to the Hello Resource from Exercise 2 and make the greeting text configurable. The greeting template shall be 
+injected into the HelloResource class and be possible to change at runtime by editing a properties file.
+The location of the properties file must be configured in the target server.
+
+ System.getProperty("configuration.properties.location")
+
+==== WildFly Configuration
+
+In WILDFLY_HOME/standalone/configuration/standalone.xml
+
+ <system-properties>
+    <property name="configuration.properties.location" value="/Users/ivar/Development/courses/javaee-exercises/config/configuration.properties"/>
+ </system-properties>
+
+==== GlassFish Configuration
+
+ http://localhost:4848
+
+Browse to System Properties in Configurations->server-config
+Alternatively
+GLASSFISH_HOME/glassfish/domains/domain1/config
+
+ <config name="server-config">
+    <system-property name="configuration.properties.location" value="/Users/ivar/Development/courses/javaee-exercises/config/configuration.properties"></system-property>
 
 
+An Example properties file is located in the config folder and is called configuration.properties
+
+ template=Hello %s
+
+The template shall be injected into HelloResource
+
+ @Inject
+ @Config(key="template")
+ private String template;
+
+You need to define the @Config annotation and a corresponding CDI producer.
+ 
+ @ApplicationScoped
+ public class ConfigProducer {
+    // your code here
+ }
+
+=== Optional Exercise 1
+
+Cache the configuration properties and use a system property to configure the cache timeout.
+
+ System.getProperty("system.config.cache.timeout")
+
+==== Optional Exercise 2
+
+Get rid of ugly EJB stack trace when item is not found.
+
+*Hint*: Create a custom exception and corresponding ExceptionMapper
+
+=== Objectives
+
+- [ ] Learn how to define custom annotations and CDI producers
+- [ ] Learn to configure properties for application servers
+- [ ] Learn how to resolve vendor specific portability issues
+
+=== Resource
+
+- [ ] https://docs.oracle.com/javaee/7/tutorial/partcdi.htm#GJBNR[Contexts and Dependency Injection]

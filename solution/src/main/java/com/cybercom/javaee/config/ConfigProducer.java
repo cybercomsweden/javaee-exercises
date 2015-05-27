@@ -1,7 +1,25 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * The MIT License
+ *
+ * Copyright 2015 Ivar Grimstad (ivar.grimstad@gmail.com).
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
  */
 package com.cybercom.javaee.config;
 
@@ -16,13 +34,13 @@ import javax.enterprise.inject.Produces;
 import javax.enterprise.inject.spi.InjectionPoint;
 
 /**
- *
+ * CDI Producer for configuration properties.
+ * 
  * @author Ivar Grimstad (ivar.grimstad@gmail.com)
  */
 @ApplicationScoped
 public class ConfigProducer {
 
-   private int cacheTimeout;
    private long timestamp;
    private final Properties configurationProperties = new Properties();
 
@@ -84,7 +102,7 @@ public class ConfigProducer {
    }
 
    /**
-    * Retrieves the configuration value for underlying service.
+    * Retrieves the configuration value from the configuration store..
     *
     * @param configKey configuration key
     * @return configuration value
@@ -95,7 +113,8 @@ public class ConfigProducer {
       }
 
       final long now = System.currentTimeMillis();
-
+      final long cacheTimeout = Integer.parseInt(System.getProperty("system.config.cache.timeout")) * 60 * 1000;
+      
       if (cacheTimeout <= 0 || now - timestamp > cacheTimeout) {
          loadPropertiesFromFile();
       }
@@ -105,14 +124,13 @@ public class ConfigProducer {
 
    @PostConstruct
    private void init() {
-
-      cacheTimeout = Integer.parseInt(System.getProperty("system.config.cache.timeout")) * 60 * 1000;
       loadPropertiesFromFile();
    }
 
    private void loadPropertiesFromFile() {
-      try (InputStream is = new FileInputStream(System.getProperty("configuration.properties.location"));) {
+      try (InputStream is = new FileInputStream(System.getProperty("configuration.properties.location"))) {
          configurationProperties.load(is);
+         timestamp = System.currentTimeMillis();
       } catch (NullPointerException | IOException e) {
       }
    }

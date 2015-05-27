@@ -2,10 +2,84 @@
 
 == Build a REST interface using JAX-RS
 
-In this exercise you are going to create your first JAX-RS application.
+In this exercise you are going to create your first JAX-RS application. 
+Continue with the application you created in Exercise 1, or use the provided starting point found in this Exercise.
 
-=== Ojbectives
+=== Part 1
+Create a simple Hello resource that says hello to the caller.
+
+|===
+| Method | URI | Input | Output | Response code
+| GET
+| http://localhost:8080/exercise-2/api/hello/Duke
+| n/a
+| Hello Duke
+| 200
+|===
+
+ public class HelloResource {
+    // your code goes here
+ }
+
+=== Part 2
+Create a REST API for a shopping list application. The following methods should be supported:
+
+|===
+| Method | URI | Input | Output | Response code
+
+| GET
+| http://localhost:8080/exercise-3/api/items
+| n/a
+| JSON item list
+| 200
+
+| POST
+| http://localhost:8080/exercise-3/api/items
+| JSON item
+| n/a (URI in Location)
+| 201
+
+| GET
+| http://localhost:8080/exercise-3/api/items/{id}
+| n/a
+| JSON item
+| 200
+
+| PUT
+| http://localhost:8080/exercise-3/api/items/{id}
+| JSON item
+| n/a
+| 200
+
+| DELETE
+| http://localhost:8080/exercise-3/api/items/{id}
+| n/a
+| n/a
+| 200
+|===
+
+Model the resources using root and sub-resource. This is not really necessary, but added here for practice.
+
+ public class ItemsResource {
+    @Inject
+    private ItemResource itemResource;
+    // your code here
+ }
+
+ public class ItemResource {
+   // your code here
+ }
+
+It is ok to hard code the responses in this exercise.
+
+=== Objectives
 
 - [ ] Learn to configure a JAX-RS application
-- [ ] Resources and Sub Resources
+- [ ] Learn about API Design
+- [ ] Learn about Response types
+- [ ] Learn about Validating input
+- [ ] Learn about Resources and Sub Resources
+- [ ] Learn how to cope with Portability Issues
 
+=== Resources
+- [ ] https://docs.oracle.com/javaee/7/tutorial/jaxrs.htm#GIEPU[JAX-RS Tutorial]
