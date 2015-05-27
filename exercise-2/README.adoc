@@ -15,7 +15,7 @@ Hello Duke
 Create a REST API for a shopping list application. The following methods should be supported:
 
 |===
-| URI | Method | Input | Output | Response code | Description
+| URI | Method | Input | Output | Response code
 
 | http://localhost:8080/exercise-3/api/items
 | GET
