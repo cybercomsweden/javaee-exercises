@@ -21,31 +21,39 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.cybercom.javaee.config;
+package com.cybercom.javaee.api;
 
-import static java.lang.annotation.ElementType.FIELD;
-import static java.lang.annotation.ElementType.METHOD;
-import static java.lang.annotation.ElementType.PARAMETER;
-import static java.lang.annotation.ElementType.TYPE;
-import java.lang.annotation.Retention;
-import static java.lang.annotation.RetentionPolicy.RUNTIME;
-import java.lang.annotation.Target;
-import javax.enterprise.util.Nonbinding;
-import javax.inject.Qualifier;
+import com.cybercom.javaee.config.Config;
+import javax.inject.Inject;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.core.Response;
 
 /**
- *
+ * Simple greeting resource just to get started.
+ * 
  * @author Ivar Grimstad (ivar.grimstad@gmail.com)
  */
-@Qualifier
-@Retention(RUNTIME)
-@Target({METHOD, FIELD, PARAMETER, TYPE})
-public @interface Config {
-    
+@Path("hello")
+public class HelloResource {
+
+   @Inject
+   @Config(key="template")
+   private String template;
+
    /**
-    * The configuration property key.
-    * @return The key to retrieve configuration property for
+    * Friendly resource.
+    * 
+    * @param name The name to greet
+    * @return A nice greeting
     */
-    @Nonbinding
-    String key() default "";
+   @GET
+   @Path("{name}")
+   public Response hello(@PathParam("name") String name) {
+
+      String message = String.format(template, name);
+
+      return Response.ok(message).build();
+   }
 }
