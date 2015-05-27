@@ -128,7 +128,7 @@ public class ConfigProducer {
    }
 
    private void loadPropertiesFromFile() {
-      try (InputStream is = new FileInputStream(System.getProperty("configuration.properties.location"));) {
+      try (InputStream is = new FileInputStream(System.getProperty("configuration.properties.location"))) {
          configurationProperties.load(is);
          timestamp = System.currentTimeMillis();
       } catch (NullPointerException | IOException e) {
