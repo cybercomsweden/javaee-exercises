@@ -1,4 +1,4 @@
-= Exercise 2 - JAX-RS
+= Exercise 2
 
 == Build a REST interface using JAX-RS
 
@@ -11,7 +11,7 @@ Create a simple Hello resource that says hello to the caller.
 |===
 | Method | URI | Input | Output | Response code
 | GET
-|  http://localhost:8080/exercise-2/api/hello/Duke
+| http://localhost:8080/exercise-2/api/hello/Duke
 | n/a
 | Hello Duke
 | 200
@@ -54,6 +54,7 @@ Create a REST API for a shopping list application. The following methods should 
 | 200
 |===
 
+It is ok to hard code the responses in this exercise.
 
 === Objectives
 
