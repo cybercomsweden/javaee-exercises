@@ -1,8 +1,16 @@
 = Exercise 4
 
-== Persistence
+== Persistence with JPA
+
+In this exercise you shall model the Item entity and create a Repository class for CRUD operations on Item.
+
+The Item shall have database generated auto-incremented primary key. 
 
 === Ojbectives
+
+- [ ] Learn how to model Entities
+- [ ] Learn how to configure persistence with persistence.xml
+- [ ] Understand vendor specific configurations
 
 === Resources
 
