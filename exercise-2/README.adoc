@@ -11,7 +11,7 @@ Create a simple Hello resource that says hello to the caller.
 |===
 | Method | URI | Input | Output | Response code
 | GET
-| http://localhost:8080/exercise-2/api/hello/Duke
+|  http://localhost:8080/exercise-2/api/hello/Duke
 | n/a
 | Hello Duke
 | 200
