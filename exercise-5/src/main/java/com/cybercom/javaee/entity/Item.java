@@ -30,18 +30,12 @@ import javax.persistence.GeneratedValue;
 import static javax.persistence.GenerationType.AUTO;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import static javax.xml.bind.annotation.XmlAccessType.NONE;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  * A shopping list item.
  * 
  * @author Ivar Grimstad (ivar.grimstad@gmail.com)
  */
-@XmlRootElement
-@XmlAccessorType(NONE)
 @Entity
 @Table(name = "item")
 public class Item implements Serializable {
@@ -51,11 +45,9 @@ public class Item implements Serializable {
    @Column(name = "id")
    private Long id;
 
-   @XmlAttribute
    @Column(name = "description")
    private String description;
    
-   @XmlAttribute
    @Column(name = "amount")
    private int amount;
    
