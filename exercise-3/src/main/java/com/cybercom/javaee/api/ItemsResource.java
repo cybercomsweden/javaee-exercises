@@ -43,58 +43,59 @@ import javax.ws.rs.core.UriInfo;
 
 /**
  * Simple REST resource for items.
- * 
+ *
  * @author Ivar Grimstad (ivar.grimstad@gmail.com)
  */
 @Path("items")
 public class ItemsResource {
-   
+
    @Inject
    private ItemResource itemResource;
-   
+
    @Context
    private UriInfo uriInfo;
-   
+
    /**
     * Get all items.
-    * 
+    *
     * @return List of all items
     */
    @GET
    @Produces(APPLICATION_JSON)
    public Response getItems() {
-      
+
       List<Item> items = new ArrayList<>();
+      items.add(new Item(1L, "Milk", 2));
       
       // This is required for GlassFish (Jersey)
       return Response.ok(new GenericEntity<List<Item>>(items) {}).build();
-      
+
       // This is ok for WildFly (RESTEasy)
 //      return Response.ok(items).build();
-   }       
-   
+   }
+
    /**
     * Create a new item in the shopping list.
-    * 
+    *
     * @param item The item
-    * 
+    *
     * @return HTTP 201 (Created) with a URI to the new item in the Location element of the HTTP Header
     */
    @POST
    @Consumes(APPLICATION_JSON)
    public Response create(@Valid Item item) {
-      
+
       item.setId(2L);
-      
+
       UriBuilder uriBuilder = uriInfo.getAbsolutePathBuilder();
       URI itemUri = uriBuilder.segment(item.getId().toString()).build();
-      
+
       return Response.created(itemUri).build();
    }
-   
+
    /**
     * Sub-resource locator for Item.
-    * 
+    *
     * @return The REST resource for a single item
     */
    @Path("{id}")

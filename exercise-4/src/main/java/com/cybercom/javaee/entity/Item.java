@@ -24,26 +24,18 @@
 package com.cybercom.javaee.entity;
 
 import java.io.Serializable;
-import static javax.xml.bind.annotation.XmlAccessType.NONE;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  * A shopping list item.
  * 
  * @author Ivar Grimstad (ivar.grimstad@gmail.com)
  */
-@XmlRootElement
-@XmlAccessorType(NONE)
 public class Item implements Serializable {
 
    private Long id;
 
-   @XmlAttribute
    private String description;
    
-   @XmlAttribute
    private int amount;
    
    public Item() {
