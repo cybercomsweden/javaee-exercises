@@ -8,6 +8,8 @@ The location of the properties file must be configured in the target server.
 
  System.getProperty("configuration.properties.location")
 
+=== Part 1
+
 ==== WildFly Configuration
 
 In WILDFLY_HOME/standalone/configuration/standalone.xml
@@ -45,17 +47,23 @@ You need to define the @Config annotation and a corresponding CDI producer.
     // your code here
  }
 
-=== Optional Exercise 1
+=== Part 2
 
 Cache the configuration properties and use a system property to configure the cache timeout.
 
  System.getProperty("system.config.cache.timeout")
 
-==== Optional Exercise 2
+=== Part 3
 
 Get rid of ugly EJB stack trace when item is not found.
 
-*Hint*: Create a custom exception and corresponding ExceptionMapper
+*Hint:* Create a custom exception and corresponding ExceptionMapper
+
+=== Part 4
+
+Limit the fields exposed through the REST API.
+
+*Hint:* JAX-B
 
 === Objectives
 
